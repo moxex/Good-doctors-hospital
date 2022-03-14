@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}    
+
+{%block content %}
+<div class="container padding-bottom-none">
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-md-6 bg-f9">
+                        <div class="booking-from">
+                            <h2> Register <span class="color-defult"> Form</span></h2>
+                            <div class="message">
+                                {% if messages %}
+                                    {% for message in messages %}
+                                    <h3 style="text-align: center;">{{ message }}</h3>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                            <div class="border-style-2 margin-bottom-30"></div>
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="text" name="first_name" id="fname" class="form-control" placeholder="First Name" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" name="last_name" id="lname" class="form-control" placeholder="Last Name" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" name="username" class="form-control" placeholder="Username" id="username" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="email" name="email" class="form-control" placeholder="Your Email Here" id="email" required>
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <input type="password" name="password" class="form-control" placeholder="Password" id="password" required>
+                                        <input type="checkbox" onclick="showPassword()" /> Show Password
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="password" name="password2" class="form-control" placeholder="Confirm Password" id="password2" required>
+                                        <input type="checkbox" onclick="showPassword()" /> Show Password
+                                    </div>
+                                    <div class="col-md-12">
+                                        <h6 class="col-mb-12">Register as::</h6>
+                                    
+                                            <input type="radio" name="user_type" value="Doctor">Doctor</input>
+                                            <input type="radio" name="user_type" value="Patient">Patient</input>
+                            
+                                        <div class="contact-textarea">
+                                            <button class="btn btn-theme" type="submit" value="Submit Form">Register</button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div id="form-messages"></div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+{%endblock content %}
+
+{% block js %}
+    <!-- jQuery -->
+    <script type="text/javascript" src="{%static 'hospital/js/jquery.min.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script type="text/javascript" src="{%static 'hospital/js/bootstrap.min.js' %}"></script>
+
+    <!-- all plugins and JavaScript -->
+    <script type="text/javascript" src="{%static 'hospital/js/bootstrap-datepicker.min.js' %}"></script>
+    <script type="text/javascript" src="{%static 'hospital/js/css3-animate-it.js' %}"></script>
+    <script type="text/javascript" src="{%static 'hospital/js/bootstrap-dropdownhover.min.js' %}"></script>
+    <script type="text/javascript" src="{%static 'hospital/js/owl.carousel.min.js' %}"></script>
+    <script type="text/javascript" src="{%static 'hospital/js/gallery.js' %}"></script>
+    <script type="text/javascript" src="{%static 'hospital/js/player.min.js' %}"></script>
+    <script type="text/javascript" src="{%static 'hospital/js/retina.js' %}"></script>
+    <script type="text/javascript" src="{%static 'hospital/js/comming-soon.js' %}"></script>
+
+    <!-- Main Custom JS -->
+    <script type="text/javascript" src="{%static 'hospital/js/script.js' %}"></script>
+
+    <!-- Show Password -->
+    <script>
+  function showPassword() {
+    var x = document.getElementById("password");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+
+  function showPassword2() {
+    var x = document.getElementById("password2");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+</script>
+    {% endblock js %}

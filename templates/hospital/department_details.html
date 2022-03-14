@@ -1,0 +1,344 @@
+{% extends 'base.html' %}
+{% load static %}    
+
+{%block content %}
+
+
+    <section class="inner-bg over-layer-black" style="background-image: url('/static/hospital/images/bg/4.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="mini-title inner-style-2">
+                        <h3>Depertment</h3>
+                        <p><a href="index-2.html">Home</a> <span class="fa fa-angle-right"></span> <a href="#">Depertment Dtails</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- depertment start -->
+    <section class="depertment-area">
+        <div class="container">
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="depertment-col">
+                            {% for department in departments %}
+                            <div class="depertment-list">
+                                <a href="{% url 'department_details' department.id %}"><i class="flaticon-heart"></i> {{ department.title }}</a>
+<!--                                 
+                                <a href="depertment-2.html"><i class="flaticon-broken-bone"></i> Orthopaedics Depertment</a>
+                                <a href="depertment-3.html"><i class="flaticon-stomach-1"></i> Gastroenterology Depertment</a>
+                                <a href="depertment-4.html"><i class="flaticon-brain"></i> Neurosciences Depertment</a>
+                                <a href="depertment-5.html"><i class="flaticon-spine-bone"></i> Spine Depertment</a>
+                                <a href="depertment-6.html"><i class="flaticon-virus"></i> Cancer Depertment</a>
+                                <a href="depertment-2.html"><i class="flaticon-kidney"></i> Colorectal Depertment</a>
+                                <a href="depertment-1.html"><i class="flaticon-liver"></i> Bariatric Depertment</a> -->
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="bg-f8 padding-20 margin-top-50">
+                          <div class="footer-item footer-widget-one margin-bottom-10">
+                            <div class="footer-title">
+                              <h4>Opening Hour</h4>
+                              <div class="border-style-2"></div>
+                            </div>
+                            <ul class="footer-list border-deshed">
+                              <li class="clearfix"> <span> Mon - Tue :  </span>
+                                <div class="value pull-right"> 10.00 am - 6.00 pm </div>
+                              </li>
+                              <li class="clearfix"> <span> Wed - Thu :</span>
+                                <div class="value pull-right"> 10.00 am - 4.00 pm </div>
+                              </li>
+                              <li class="clearfix"> <span> Friday : </span>
+                                <div class="value pull-right"> 01.00 pm - 5.00 pm </div>
+                              </li>
+                              <li class="clearfix"> <span>  Saturday : </span>
+                                <div class="value pull-right">  10.00 am - 4.00 pm </div>
+                              </li>
+                              <li class="clearfix"> <span> Sunday : </span>
+                                <div class="value pull-right"> Colosed </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <img src="{{ department.thumbnail.url }}" alt="">
+                        <h3 class="margin-top-30 margin-bottom-20"> <span class="color-defult">{{ department.title }}</span> Depertment</h3>
+                        <p>The Good Doctors <span class="color-defult">Hospital</span> {{ department.description }} </p>
+                        <div class="row margin-top-20 margin-left-10">
+                            <div class="col-md-6">
+                                <div class="cardilogists-list">
+                                    <h4>Treatments Fee</h4>
+                                    <div class="border-style-2"></div>
+                                    <ul>
+                                        <li><i class="pe-7s-check"></i> Cardilogists test – $105</li>
+                                        <li><i class="pe-7s-check"></i> Orthopaedics test – $30</li>
+                                        <li><i class="pe-7s-check"></i> Neurosciences test – $45</li>
+                                        <li><i class="pe-7s-check"></i> Cancer blood – $81</li>
+                                        <li><i class="pe-7s-check"></i> Gastroenterology test – $123</li>
+                                        <li><i class="pe-7s-check"></i> Cardilogists test – $85</li>
+                                        <li><i class="pe-7s-check"></i> Colorectal test – $75</li>
+                                        <li><i class="pe-7s-check"></i> Spine ( Back Bron ) test – $19</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="cardilogists-list">
+                                    <h4>Investigations Fee</h4>
+                                    <div class="border-style-2"></div>
+                                    <ul>
+                                        <li><i class="pe-7s-check"></i> Cardilogists test – $105</li>
+                                        <li><i class="pe-7s-check"></i> Orthopaedics test – $30</li>
+                                        <li><i class="pe-7s-check"></i> Neurosciences test – $45</li>
+                                        <li><i class="pe-7s-check"></i> Cancer blood – $81</li>
+                                        <li><i class="pe-7s-check"></i> Gastroenterology test – $123</li>
+                                        <li><i class="pe-7s-check"></i> Cardilogists test – $85</li>
+                                        <li><i class="pe-7s-check"></i> Colorectal test – $75</li>
+                                        <li><i class="pe-7s-check"></i> Spine ( Back Bron ) test – $19</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- depertment end -->
+
+    <!-- Counter start -->
+    <section class="funfact-field over-layer-default" style="background-image: url('img/bg/6.jpg')">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-6">
+                    <div class="counter-col text-center">
+                        <i class="flaticon-heart"></i>
+                        <div class="count">
+                            <div class="start-count">25</div>
+                            <h4>Heart Transplants</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-6">
+                    <div class="counter-col text-center">
+                        <i class="flaticon-human-lungs"></i>
+                        <div class="count">
+                            <div class="start-count">979</div>
+                            <h4>BARIATRIC SURGERY</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-6">
+                    <div class="counter-col text-center">
+                        <i class="flaticon-kidney"></i>
+                        <div class="count">
+                            <div class="start-count">5264</div>
+                            <h4>CRITICAL CARE</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-6">
+                    <div class="counter-col text-center">
+                        <i class="flaticon-first-aid-kit"></i>
+                        <div class="count">
+                            <div class="start-count border-none">119</div>
+                            <h4>EXTPART Doctor</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Counter end -->
+
+    <!-- Team start -->
+    <section class="team-area">
+        <div class="container">
+            <div class="section-title">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 text-center">
+                        <h2><span class="color-defult">Experience</span> Doctor</h2>
+                        <div class="line-border-center bg-defult"></div>
+                        <p>Repellendus error placeat numquam doloribus perferendis consequatur maxime molestiae soluta Corporis quidem quaerat accusantium omnis repudiandae nulla recusandae</p>
+                    </div>
+                </div>
+            </div>
+            <div class="section-content">
+                <div class="row">
+                    <div class="team-carousel">
+                        <div class="item">
+                            <div class="team-item-2">
+                                <img src="img/team/1.png" alt="">
+                                <div class="team-contact">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="team-content">
+                                    <h4><a href="#">Dr. George Beller</a></h4>
+                                    <h6>Cardiologists</h6>
+                                    <div class="team-content-icon">
+                                        <i class="flaticon-heart"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="team-item-2">
+                                <img src="img/team/2.png" alt="">
+                                <div class="team-contact">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="team-content">
+                                    <h4><a href="#">Dr. John DiMarco</a></h4>
+                                    <h6>Endocrinologists</h6>
+                                    <div class="team-content-icon">
+                                        <i class="flaticon-stomach"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="team-item-2">
+                                <img src="img/team/3.png" alt="">
+                                <div class="team-contact">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="team-content">
+                                    <h4><a href="#">Dr. W. Kline Bolton</a></h4>
+                                    <h6>Neurologists</h6>
+                                    <div class="team-content-icon">
+                                        <i class="flaticon-brain"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="team-item-2">
+                                <img src="img/team/4.png" alt="">
+                                <div class="team-contact">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="team-content">
+                                    <h4><a href="#">Dr. George Beller</a></h4>
+                                    <h6>Cardiologists</h6>
+                                    <div class="team-content-icon">
+                                        <i class="flaticon-virus"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="team-item-2">
+                                <img src="img/team/5.png" alt="">
+                                <div class="team-contact">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="team-content">
+                                    <h4><a href="#">Dr. W. Kline Bolton</a></h4>
+                                    <h6>skin specialist</h6>
+                                    <div class="team-content-icon">
+                                        <i class="flaticon-skin-cells"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Team end -->
+
+   <!-- divider start -->
+    <section class="service-area over-layer-default" style="background-image:url(img/bg/5.jpg);">
+        <div class="container padding-bottom-none padding-top-40">
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-sm-12 col-md-4">
+                        <div class="service-item style-1 text-white border-right">
+                            <div class="service-icon">
+                                <i class="pe-7s-call"></i>
+                            </div>
+                            <div class="content">
+                                <h5><a href="#">Give us a Call</a></h5>
+                                <p>+970-438-3258</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <div class="service-item style-1 text-white border-right">
+                            <div class="">
+                                <i class="pe-7s-mail-open"></i>
+                            </div>
+                            <div class="content">
+                                <h5><a href="#">Send us a Message</a></h5>
+                                <p>Your_malil@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <div class="service-item style-1 text-white">
+                            <div class="">
+                                <i class="pe-7s-map-marker"></i>
+                            </div>
+                            <div class="content">
+                                <h5><a href="#">Visit our Location</a></h5>
+                                <p>12 New york, USA </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- divider end -->
+{%endblock content %}
+
+{% block js %}
+    <!-- jQuery -->
+    <script type="text/javascript" src="{%static 'hospital/js/jquery.min.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script type="text/javascript" src="{%static 'hospital/js/bootstrap.min.js' %}"></script>
+
+    <!-- all plugins and JavaScript -->
+    <script type="text/javascript" src="{%static 'hospital/js/bootstrap-datepicker.min.js' %}"></script>
+    <script type="text/javascript" src="{%static 'hospital/js/css3-animate-it.js' %}"></script>
+    <script type="text/javascript" src="{%static 'hospital/js/bootstrap-dropdownhover.min.js' %}"></script>
+    <script type="text/javascript" src="{%static 'hospital/js/owl.carousel.min.js' %}"></script>
+    <script type="text/javascript" src="{%static 'hospital/js/gallery.js' %}"></script>
+    <script type="text/javascript" src="{%static 'hospital/js/player.min.js' %}"></script>
+    <script type="text/javascript" src="{%static 'hospital/js/retina.js' %}"></script>
+    <script type="text/javascript" src="{%static 'hospital/js/comming-soon.js' %}"></script>
+
+    <!-- Main Custom JS -->
+    <script type="text/javascript" src="{%static 'hospital/js/script.js' %}"></script>
+    {% endblock js %}
