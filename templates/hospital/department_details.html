@@ -26,18 +26,11 @@
                         <div class="depertment-col">
                             {% for department in departments %}
                             <div class="depertment-list">
-                                <a href="{% url 'department_details' department.id %}"><i class="flaticon-heart"></i> {{ department.title }}</a>
-<!--                                 
-                                <a href="depertment-2.html"><i class="flaticon-broken-bone"></i> Orthopaedics Depertment</a>
-                                <a href="depertment-3.html"><i class="flaticon-stomach-1"></i> Gastroenterology Depertment</a>
-                                <a href="depertment-4.html"><i class="flaticon-brain"></i> Neurosciences Depertment</a>
-                                <a href="depertment-5.html"><i class="flaticon-spine-bone"></i> Spine Depertment</a>
-                                <a href="depertment-6.html"><i class="flaticon-virus"></i> Cancer Depertment</a>
-                                <a href="depertment-2.html"><i class="flaticon-kidney"></i> Colorectal Depertment</a>
-                                <a href="depertment-1.html"><i class="flaticon-liver"></i> Bariatric Depertment</a> -->
+                                <a href="{% url 'hospital:department_details' department.id %}"><i class="flaticon-heart"></i> {{ department.title }}</a>
                             </div>
                             {% endfor %}
                         </div>
+                        
                         <div class="bg-f8 padding-20 margin-top-50">
                           <div class="footer-item footer-widget-one margin-bottom-10">
                             <div class="footer-title">
@@ -110,7 +103,7 @@
     <!-- depertment end -->
 
     <!-- Counter start -->
-    <section class="funfact-field over-layer-default" style="background-image: url('img/bg/6.jpg')">
+    <section class="funfact-field over-layer-default" style="background-image: url('/static/hospital/images/bg/6.jpg')">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-3 col-sm-6 col-xs-6">

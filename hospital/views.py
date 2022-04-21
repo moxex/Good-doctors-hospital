@@ -1,7 +1,11 @@
+from multiprocessing import context
 from django.shortcuts import render, redirect
+from django.shortcuts import render, get_object_or_404
 from .models import Department
 from users.models import User
 from django.views.generic import ListView, DetailView, TemplateView
+from users.models import DoctorProfile
+from blog.models import Post
 
 STATUS = [
     ('Doctor', 'Doctor'),
@@ -9,21 +13,22 @@ STATUS = [
     ('Human Resource', 'Human Resource'),
 ]
 
-# Home View
-class HomeView(ListView):
-    template_name = 'hospital/home.html'
-    queryset = Department.objects.all()
-    context_object_name = 'departments'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data()
-        context['experts', 'doctors', 'user'] = User.objects.all()
-        return context
+def home(request):
+    doctors = DoctorProfile.objects.all()[:6]
+    latest_posts = Post.objects.order_by('-date')[:3]
+    departments = Department.objects.all()
+    context = {
+        'doctors': doctors,
+        'departments': departments,
+        'latest_posts': latest_posts
+    }
+    return render(request, 'hospital/home.html', context)
 
 
-# Department List Views
+# # Department List Views
 class DepartmentListView(ListView):
-    queryset = Department.objects.all()
+    queryset = Department.objects.all()[:6]
     template_name = "hospital/departments.html"
 
 # Department Detail View

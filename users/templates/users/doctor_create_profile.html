@@ -1,0 +1,183 @@
+{% extends 'base.html' %} {% block title %} Good Doctors Hospital | Create Personal Profile Form{% endblock title %}
+{% load static %}    
+
+{%block content %}
+<div class="container padding-bottom-none">
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-md-6 bg-f9">
+                        <div class="booking-from">
+                            <h2> Doctor Profile <span class="color-defult">Please fill the form below to create a profile</span></h2>
+                            <div class="border-style-2 margin-bottom-30"></div>
+                            <p class="margin-bottom-30 message">
+                                {% if messages %}
+                                    {% for message in messages %}
+                                    <h3 style="text-align: center;">{{ message }}</h3>
+                                    {% endfor %}
+                                {% endif %}
+                            </p>
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <input id="name" class="form-control" value="{{ user.first_name }} {{ user.last_name }} ({{ user.email }})" type="text" readonly>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label>Speciality:</label>
+                                            <select name="speciality" class="form-control">
+                                                <option value="Dermatologists">Dermatologists</option>
+                                                <option value="Cardiologists">Cardiologists</option>
+                                                <option value="Gastroenterologist">Gastroenterologist</option>
+                                                <option value="Physiotherapist">Physiotherapist</option>
+                                                <option value="Pharmacist">Pharmacist</option>
+                                                <option value="Orthopaedist">Orthopaedist</option>
+                                                <option value="Nephrologist">Nephrologist</option>
+                                                <option value="Neurologist">Neurologist</option>
+                                                <option value="Rectal Surgeons">Rectal Surgeons</option>
+                                                <option value="Anesthesiologists">Anesthesiologists</option>
+                                                <option value="Allergists/Immunologists">Allergists/Immunologists</option>
+                                                <option value="Emergency Medicine Specialists">Emergency Medicine Specialists</option>
+                                            </select>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label>Departement:</label>
+                                            <select name="department" class="form-control">
+                                                <option value="Anesthesiology">Anesthesiology</option>
+                                                <option value="Pharmacy">Pharmacy</option>
+                                                <option value="Radiology">Radiology</option>
+                                                <option value="Gastroenterology">Gastroenterology</option>
+                                                <option value="Community Medicine">Community Medicine</option>
+                                                <option value="Internal Medicine">Internal Medicine</option>
+                                                <option value="Laboratory">Laboratory</option>
+                                                <option value="Nursing">Nursing</option>
+                                                <option value="Medical Records">Medical Records</option>
+                                                <option value="Cardiology">Cardiology</option>
+                                                <option value="Pediatrics">Pediatrics</option>
+                                                <option value="Obstetics">Obstetics</option>
+                                                <option value="Nephrology">Nephrology</option>
+                                                <option value="Physiotherapy">Physiotherapy</option>
+                                            </select>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label>Gender:</label>
+                                            <select name="gender" class="form-control">
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                            </select>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label>DOB</label>
+                                        <input type="date" name="date_of_birth" id="phone_number" class="form-control" placeholder="D.O.B" required>
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <label>Phone Number</label>
+                                        <input type="tel" name="phone_number" id="phone_number" class="form-control" placeholder="Phone Number" required>
+                                    </div>
+
+
+                                    <div class="col-md-6">
+                                        <label>Address</label>
+                                        <input type=text" name="address" id="address" class="form-control" placeholder="Address" required>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label>Your Country:</label>
+                                        <select name="country" id="country_name" class="form-control" required>
+                                            {% for country in countries %}
+                                                <option value="{{ country.id}}">{{ country.alpha_2 }} - {{ country.name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label>Your State / City:</label>
+                                        <select name="city" id="city_name" class="form-control" required>
+                                        
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label>Education</label>
+                                        <input type="text" name="education" class="form-control" placeholder="Enter Your Education" id="education">
+                                    </div>
+                                    
+                                    
+                                    <div class="col-md-6">
+                                        <label>Facebook</label>
+                                        <input type="text" name="facebook" class="form-control" placeholder="Enter Your Facebook link" id="facebook">
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <label>Twitter</label>
+                                        <input type="text" name="twitter" class="form-control" placeholder="Enter Your Twitter link" id="twitter">
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <label>LinkedIn</label>
+                                        <input type="text" name="linkedIn" class="form-control" placeholder="Enter Your LinkedIn" id="linkedIn">
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <label>Time Available:</label>
+                                        <input type="datetime" name="available_time" class="form-control" required>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label>Weekdays</label>
+                                        <input type="text" name="weekdays" class="form-control" placeholder="Monday-Friday" id="weekdays" required>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label>Weekends</label>
+                                        <input type="text" name="weekends" class="form-control" placeholder="Saturday-Sunday" id="weekends" required>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <label> Profile Picture</label>
+                                        <input type="file" name="profile_picture" class="form-control" required>
+                                    </div>
+                                    
+            
+                                    <div class="col-md-12">
+                                        <div class="contact-textarea">
+                                            <textarea class="form-control" rows="6" placeholder="Write something about yourself not more than 300 words ..." id="message" name="about_me" required></textarea>
+                                            <button class="btn btn-theme" type="submit" value="Submit Form">Update</button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div id="form-messages"></div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+{%endblock content %}
+
+{% block js %}
+    <!-- jQuery -->
+    <script type="text/javascript" src="{%static 'hospital/js/jquery.min.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script type="text/javascript" src="{%static 'hospital/js/bootstrap.min.js' %}"></script>
+
+    <!-- all plugins and JavaScript -->
+    <script type="text/javascript" src="{%static 'hospital/js/bootstrap-datepicker.min.js' %}"></script>
+    <script type="text/javascript" src="{%static 'hospital/js/css3-animate-it.js' %}"></script>
+    <script type="text/javascript" src="{%static 'hospital/js/bootstrap-dropdownhover.min.js' %}"></script>
+    <script type="text/javascript" src="{%static 'hospital/js/owl.carousel.min.js' %}"></script>
+    <script type="text/javascript" src="{%static 'hospital/js/gallery.js' %}"></script>
+    <script type="text/javascript" src="{%static 'hospital/js/player.min.js' %}"></script>
+    <script type="text/javascript" src="{%static 'hospital/js/retina.js' %}"></script>
+    <script type="text/javascript" src="{%static 'hospital/js/comming-soon.js' %}"></script>
+
+    <!-- Main Custom JS -->
+    <script type="text/javascript" src="{%static 'hospital/js/script.js' %}"></script>
+    {% endblock js %}

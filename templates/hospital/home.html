@@ -361,8 +361,8 @@
                     <div class="gallery-filter-item text-center">
                         <ul class="gallery-filter">
                             <li class="active"><a href="#" data-filter="*" class="current">All Projects</a></li>
-                            <li class=""><a href="#" data-filter=".gp-two" class="current"> Buliding</a></li>
-                            <li class=""><a href="#" data-filter=".gp-three" class="current">Industry</a></li>
+                            <li class=""><a href="#" data-filter=".gp-two" class="current"> Nurse</a></li>
+                            <li class=""><a href="#" data-filter=".gp-three" class="current">Operation</a></li>
                             <li class=""><a href="#" data-filter=".gp-four" class="current">Transportation</a></li>
                             <li class=""><a href="#" data-filter=".gp-five" class="current">Residential</a></li>
                         </ul>
@@ -461,7 +461,7 @@
     <!-- portfolio end -->
 
    <!-- divider start -->
-    <section class="divider divider-video over-layer-white" style="background-image:url(img/bg/6.jpg);">
+    <section class="divider divider-video over-layer-white" style="background-image:url(/static/hospital/image/bg/6.jpg);">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">
@@ -499,9 +499,9 @@
                                 </a>
                             </div>
                             <div class="practice-content">
-                                <h4><a href="{% url 'department_details' department.id %}">{{ department.title }}</a></h4>
-                                <p>{{ department.description }}</p>
-                                <a href="{% url 'department_details' department.id %}" class="btn-theme hvr-bounce-to-top"> Read more</a>
+                                <h4><a href="{% url 'hospital:department_details' department.id %}">{{ department.title }}</a></h4>
+                                <p>{{ department.description | slice:":150"}}</p>
+                                <a href="{% url 'hospital:department_details' department.id %}" class="btn-theme hvr-bounce-to-top"> Read more</a>
                             </div>
                         </div>
                     </div>
@@ -526,8 +526,7 @@
             </div>
             <div class="section-content">
                 <div class="row">
-                    {% for doctor in experts %}
-                        {% if user.user_type == 'Doctor' %}
+                    {% for doctor in doctors %}
                         <div class="team-carousel">
                             <div class="item">
                                 <div class="team-item-2">
@@ -541,14 +540,15 @@
                                         </ul>
                                     </div>
                                     <div class="team-content">
-                                        <h4><a href="{% url 'doctors_details' doctor.id %}">{{ doctor.user}}</a></h4>
-                                        <h6>{{ doctor.department }}</h6>
+                                        <h4><a href="{% url 'doctor_details' doctor.id %}">Dr. {{ doctor.name.first_name }} {{ doctor.name.last_name }}</a></h4>
+                                        <h6>{{ doctor.department.title }}</h6>
                                         <div class="team-content-icon">
                                             <i class="flaticon-heart"></i>
                                         </div>
                                     </div>
                                     <div class="timetable">
                                         <div class="item">
+                                            {{ doctor.avail}}
                                             <div class="label">Monday-Friday</div>
                                             <div class="value">08:00 - 17:00</div>
                                         </div>
@@ -565,7 +565,6 @@
                                 </div>
                             </div>   
                         </div>
-                        {% endif %}
                     {% endfor %}
                 </div>
             </div>
@@ -714,60 +713,36 @@
             <div class="section-content">
                 <div class="row">
                     <div class="blog-feature">
+                        {% for post in latest_posts %}
                         <div class="col-md-4 col-sm-6 col-xs-12">
                             <div class="blog-item style-1">
                                 <div class="blog-date text-center">
                                     <i class="pe-7s-link"></i>
                                 </div>
-                                <div class="blog-img"><a href="#"><img src="{%static 'hospital/images/blog/1.jpg' %}" alt=""></a>
+                                <div class="blog-img"><a href="#"><img src="{{ post.image.url }}" alt=""></a>
                                     <div class="blog-event-date">
-                                        <h3>13 <small>Jun</small></h3>
+                                        <h3>On <small>{{ post.date }}</small></h3>
                                     </div>
                                 </div>
                                 <div class="blog-content">
-                                    <a href="#"><h4>What's the Right Choice? </h4></a>
-                                    <i class="fa fa-user-o"></i> <a href="#">Admin</a> | <i class="fa fa-heart-o"></i> <a href="#">Like :20 </a> | <i class="fa fa-comment-o"></i><a href="#"> Comments: 10</a>
-                                    <p>come from a family of doctors and I was suffering from morbid obesity with co-morbidities like diabetes, hypertension, and sleep apnoea.</p>
-                                    <a href="#" class="btn btn-simple">Read More</a>
+                                    <a href="{% url 'blog:post_detail' post.pk post.slug %}"><h4>{{ post.title|title }}</h4></a>
+                                    <i class="fa fa-user-o"></i> <a href="#">{{ post.author }</a> | <i class="fa fa-heart-o"></i> 
+                                    <a href="#">Like :20 </a> | 
+                                    <i class="fa fa-comment-o"></i>
+                                    {% if post.number_of_comments %}
+                                        {% with post.number_of_comments as total_comments %}
+                                            <a href="{% url 'blog:post_detail' post.pk post.slug %}">{{ total_comments }} Comment{{ total_comments|pluralize }}</a>
+                                        {% endwith %}
+                                    {% else %}
+                                        0 Comment
+                                    {% endif %}
+                                        
+                                    <p>{{ post.body | slice:":150" }}...</p>
+                                    <a href="{% url 'blog:post_detail' post.pk post.slug %}" class="btn btn-simple">Read More</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                            <div class="blog-item style-1">
-                                <div class="blog-date text-center">
-                                    <i class="pe-7s-link"></i>
-                                </div>
-                                <div class="blog-img"><a href="#"><img src="{%static 'hospital/images/blog/2.jpg' %}" alt=""></a>
-                                    <div class="blog-event-date">
-                                        <h3>17 <small>Jun</small></h3>
-                                    </div>
-                                </div>
-                                <div class="blog-content">
-                                    <a href="#"><h4>Caregiver Series </h4></a>
-                                    <i class="fa fa-user-o"></i> <a href="#">Admin</a> | <i class="fa fa-heart-o"></i> <a href="#">Like :20 </a> | <i class="fa fa-comment-o"></i><a href="#"> Comments: 10</a>
-                                    <p>come from a family of doctors and I was suffering from morbid obesity with co-morbidities like diabetes, hypertension, and sleep apnoea.</p>
-                                    <a href="#" class="btn btn-simple">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 col-xs-12 center-block">
-                            <div class="blog-item style-1">
-                                <div class="blog-date text-center">
-                                    <i class="pe-7s-link"></i>
-                                </div>
-                                <div class="blog-img"><a href="#"><img src="{%static 'hospital/images/blog/3.jpg' %}" alt=""></a>
-                                    <div class="blog-event-date">
-                                        <h3>19 <small>Jun</small></h3>
-                                    </div>
-                                </div>
-                                <div class="blog-content">
-                                    <a href="#"><h4>Little Hats, Big Hearts </h4></a>
-                                    <i class="fa fa-user-o"></i> <a href="#">Admin</a> | <i class="fa fa-heart-o"></i> <a href="#">Like :20 </a> | <i class="fa fa-comment-o"></i><a href="#"> Comments: 10</a>
-                                    <p>come from a family of doctors and I was suffering from morbid obesity with co-morbidities like diabetes, hypertension, and sleep apnoea.</p>
-                                    <a href="#" class="btn btn-simple">Read More</a>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

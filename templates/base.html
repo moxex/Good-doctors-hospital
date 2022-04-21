@@ -83,9 +83,9 @@
                                 <li class="dropdown active">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span data-hover="Home">Home <i class="fa fa-angle-down" aria-hidden="true"></i></span> </a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="index-2.html">Home one</a>
+                                        <li><a href="{% url 'hospital:hospital-home' %}">Home</a>
                                         </li>
-                                        <li><a href="index-3.html">Home two</a>
+                                        <!-- <li><a href="index-3.html">Home two</a> -->
                                         </li>
                                     </ul>
                                 </li>
@@ -195,7 +195,9 @@
                                             </ul>
                                         </div>
                                         <div class="btn-group">
-                                            <button type="button" class="btn dropdown-toggle" id="header-drop-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon icon-ShoppingCart"></i><span class="menu-cart">8</span></button>
+                                            {% with total_items=cart|length %}
+                                                {% if total_items > 0 %}
+                                            <button type="button" class="btn dropdown-toggle" id="header-drop-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon icon-ShoppingCart"></i><span class="menu-cart">{{ total_items }}</span></button>
                                             <ul class="dropdown-menu dropdown-menu-right cart dropdown-animation" aria-labelledby="header-drop-4">
                                                 <li>
                                                     <table class="table table-hover">
@@ -208,32 +210,28 @@
                                                         </thead>
                                                         <tbody>
                                                         <tr>
-                                                            <td class="quantity">2 x</td>
-                                                            <td class="product"><a href="shop-product.html">Android 4.4 Smartphone</a><span class="small">4.7" Dual Core 1GB</span></td>
+                                                            <td class="quantity">x {{ items }}</td>
+                                                            <td class="product"><a href="{{ product.get_absolute_url }}">{{ product.name }}</a><span class="small">{{ product.name }}</span></td>
                                                             <td class="amount">$199.00</td>
                                                         </tr>
+                                                        
+                                                        
                                                         <tr>
-                                                            <td class="quantity">3 x</td>
-                                                            <td class="product"><a href="shop-product.html">Android 4.2 Tablet</a><span class="small">7.3" Quad Core 2GB</span></td>
-                                                            <td class="amount">$299.00</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="quantity">3 x</td>
-                                                            <td class="product"><a href="shop-product.html">Desktop PC</a><span class="small">Quad Core 3.2MHz, 8GB RAM, 1TB Hard Disk</span></td>
-                                                            <td class="amount">$1499.00</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="total-quantity" colspan="2"><strong>Total 8 Items</strong></td>
-                                                            <td class="total-amount"><strong>$1997.00</strong></td>
+                                                            <td class="total-quantity" colspan="2"><strong>Total, {{ total_items }} item{{ total_items|pluralize }}</strong></td>
+                                                            <td class="total-amount"><strong>${{ cart.get_total_price }}</strong></td>
                                                         </tr>
                                                         </tbody>
                                                     </table>
                                                     <div class="panel-body text-right">
-                                                        <a href="#" class="menu-shop-btn">View Cart</a>
+                                                        <a href="{% url "cart:cart_detail" %}" class="menu-shop-btn">View Cart</a>
                                                         <a href="#" class="menu-shop-btn">Checkout</a>
                                                     </div>
                                                 </li>
                                             </ul>
+                                            {% else %}
+                                                Your cart is empty.
+                                            {% endif %}
+                                            {% endwith %}
                                         </div>
                                     </div>
                                 </li>
@@ -311,15 +309,15 @@
                             <div class="border-style-1"></div>
                           </div>
                           <div class="flicker-feed gutter">
-                            <a href="img/flicker/1.jpg" class="lightbox-image" title="Image Caption Here"><img src="img/flicker/1.jpg" alt=""></a>
-                            <a href="img/flicker/2.jpg" class="lightbox-image" title="Image Caption Here"><img src="img/flicker/2.jpg" alt=""></a>
-                            <a href="img/flicker/3.jpg" class="lightbox-image" title="Image Caption Here"><img src="img/flicker/3.jpg" alt=""></a>
-                            <a href="img/flicker/4.jpg" class="lightbox-image" title="Image Caption Here"><img src="img/flicker/4.jpg" alt=""></a>
-                            <a href="img/flicker/5.jpg" class="lightbox-image" title="Image Caption Here"><img src="img/flicker/5.jpg" alt=""></a>
-                            <a href="img/flicker/6.jpg" class="lightbox-image" title="Image Caption Here"><img src="img/flicker/6.jpg" alt=""></a>
-                            <a href="img/flicker/7.jpg" class="lightbox-image" title="Image Caption Here"><img src="img/flicker/7.jpg" alt=""></a>
-                            <a href="img/flicker/8.jpg" class="lightbox-image" title="Image Caption Here"><img src="img/flicker/8.jpg" alt=""></a>
-                            <a href="img/flicker/9.jpg" class="lightbox-image" title="Image Caption Here"><img src="img/flicker/9.jpg" alt=""></a>
+                            <a href="{%static 'hospital/images/flicker/1.jpg' %}" class="lightbox-image" title="Image Caption Here"><img src="{%static 'hospital/images/flicker/1.jpg' %}" alt=""></a>
+                            <a href="{%static 'hospital/images/flicker/2.jpg' %}" class="lightbox-image" title="Image Caption Here"><img src="{%static 'hospital/images/flicker/2.jpg' %}" alt=""></a>
+                            <a href="{%static 'hospital/images/flicker/3.jpg' %}" class="lightbox-image" title="Image Caption Here"><img src="{%static 'hospital/images/flicker/3.jpg' %}" alt=""></a>
+                            <a href="{%static 'hospital/images/flicker/4.jpg' %}" class="lightbox-image" title="Image Caption Here"><img src="{%static 'hospital/images/flicker/4.jpg' %}" alt=""></a>
+                            <a href="{%static 'hospital/images/flicker/5.jpg' %}" class="lightbox-image" title="Image Caption Here"><img src="{%static 'hospital/images/flicker/5.jpg' %}" alt=""></a>
+                            <a href="{%static 'hospital/images/flicker/6.jpg' %}" class="lightbox-image" title="Image Caption Here"><img src="{%static 'hospital/images/flicker/6.jpg' %}" alt=""></a>
+                            <a href="{%static 'hospital/images/flicker/7.jpg' %}" class="lightbox-image" title="Image Caption Here"><img src="{%static 'hospital/images/flicker/7.jpg' %}" alt=""></a>
+                            <a href="{%static 'hospital/images/flicker/8.jpg' %}" class="lightbox-image" title="Image Caption Here"><img src="{%static 'hospital/images/flicker/8.jpg' %}" alt=""></a>
+                            <a href="{%static 'hospital/images/flicker/9.jpg' %}" class="lightbox-image" title="Image Caption Here"><img src="{%static 'hospital/images/flicker/9.jpg' %}" alt=""></a>
                           </div>
                         </div>
                       </div>

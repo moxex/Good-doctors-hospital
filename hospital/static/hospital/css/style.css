@@ -454,7 +454,7 @@ button {
     background-color: #f5f4e9; 
     background-position: center center; 
     background-repeat: no-repeat; 
-    background-image: url('../img/preloder/1.gif');
+    background-image: url('/static/hospital/images/preloder/1.gif');
 }
 
 /*****=====*****=====*****=====*****=====
@@ -1576,7 +1576,7 @@ a.flip-animate:hover span:before, a.flip-animate:focus span:before {
 }
 
 .main-slider-bg {
-    background: url('../img/bg/8.html');
+    background: url('static/hospital/images/bg/8.html');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -5171,7 +5171,7 @@ footer {
 /***** Coming Soon *****/
 .coming-soon {
     color: #fff;
-    background-image: url('../img/bg/body.html');
+    background-image: url('/static/hospital/images/bg/body.html');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -5756,7 +5756,7 @@ ul.rating-text li, .pro-review ul li, .social-icon ul li {
 }
 
 .product-item .on-sale {
-    background: rgba(0, 0, 0, 0) url(../img/shop/sell.png) no-repeat scroll 0 0;
+    background: rgba(0, 0, 0, 0) url(/static/hospital/images/shop/sell.png) no-repeat scroll 0 0;
     color: #fff;
     font-size: 15px;
     font-weight: 700;
@@ -5882,7 +5882,7 @@ ul.rating-text li, .pro-review ul li, .social-icon ul li {
   -ms-transition: all .2s;
   -o-transition: all .2s;
   transition: all .2s;
-  background-image: url('../img/shop/card.jpg');
+  background-image: url('/static/hospital/images/shop/card.jpg');
   background-position: 0 0;
   float: left;
   height: 32px;
@@ -5894,13 +5894,13 @@ ul.rating-text li, .pro-review ul li, .social-icon ul li {
   background-position: -51px 0;
 }
 .cards li {
-  background-image: url('../img/shop/card.jpg');
+  background-image: url('static/hospital/images/shop/card.jpg');
 }
 .cards .amex {
   background-position: -102px 0;
 }
 .cards li {
-  background-image: url('../img/shop/card.jpg');
+  background-image: url('/static/hospital/images/shop/card.jpg');
 }
 .cards li:last-child {
   margin-right: 0;

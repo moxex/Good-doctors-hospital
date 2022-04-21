@@ -42,9 +42,10 @@ INSTALLED_APPS = [
     # My Apps
     'hospital.apps.HospitalConfig',
     'users.apps.UsersConfig',
-    'user_profile.apps.UserProfileConfig',
     'appointment.apps.AppointmentConfig',
     'products.apps.ProductsConfig',
+    'cart.apps.CartConfig',
+    'blog.apps.BlogConfig',
 ]
 
 MIDDLEWARE = [
@@ -70,6 +71,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processors.cart',
             ],
         },
     },
@@ -130,6 +132,10 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+LOGIN_URL = '/users/login_user/'
+
+CART_SESSION_ID = 'cart'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -137,3 +143,5 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.User'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

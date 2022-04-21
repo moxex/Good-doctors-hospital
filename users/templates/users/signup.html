@@ -5,17 +5,17 @@
 <div class="container padding-bottom-none">
             <div class="section-content">
                 <div class="row">
-                    <div class="col-md-6 bg-f9">
+                    <div class="col-md-9 bg-f9">
                         <div class="booking-from">
                             <h2> Register <span class="color-defult"> Form</span></h2>
-                            <div class="message">
+                            <div class="border-style-2 margin-bottom-30"></div>
+                            <p class="margin-bottom-30 message">
                                 {% if messages %}
                                     {% for message in messages %}
                                     <h3 style="text-align: center;">{{ message }}</h3>
                                     {% endfor %}
                                 {% endif %}
-                            </div>
-                            <div class="border-style-2 margin-bottom-30"></div>
+                            </p>
                             <form method="post" enctype="multipart/form-data">
                                 {% csrf_token %}
                                 <div class="row">
@@ -43,8 +43,8 @@
                                     <div class="col-md-12">
                                         <h6 class="col-mb-12">Register as::</h6>
                                     
-                                            <input type="radio" name="user_type" value="Doctor">Doctor</input>
-                                            <input type="radio" name="user_type" value="Patient">Patient</input>
+                                            <input type="radio" name="user_type" value="Doctor"> Doctor</input>
+                                            <input type="radio" name="user_type" value="Patient"> Patient</input>
                             
                                         <div class="contact-textarea">
                                             <button class="btn btn-theme" type="submit" value="Submit Form">Register</button>
